@@ -42,5 +42,7 @@ public class Main {
         execBinaryTree.outOrderTraverseRecursive(binaryTree);
         System.out.println("\n非递归后序遍历二叉树开始");
         execBinaryTree.outOrderTraverseNoRecursive(binaryTree);
+        System.out.println("\n层次遍历二叉树开始");
+        execBinaryTree.hierarchicalTraversal(binaryTree);
     }
 }

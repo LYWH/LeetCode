@@ -3,6 +3,7 @@ package Tree.BinaryTree;
  * 写程序仔细一点，不要出错
  * */
 
+import java.util.LinkedList;
 import java.util.Scanner;
 import java.util.Stack;
 
@@ -75,9 +76,10 @@ public class ExecBinaryTree {
             return;
         }
         Stack<BinaryTree> stack = new Stack<>();
+        BinaryTree temp;
         stack.add(binaryTree);
         while (!stack.isEmpty()) {
-            BinaryTree temp = stack.pop();
+            temp = stack.pop();
             System.out.print(temp.num + "  ");
             if (temp.rightChild != null) stack.add(temp.rightChild);
             if (temp.leftChild != null) stack.add(temp.leftChild);
@@ -128,7 +130,7 @@ public class ExecBinaryTree {
             }
             temp = stack.peek();
             //这个if表明这个栈顶端的节点的右孩子为空或者已经被访问，需要访问当前节点
-            if (temp.rightChild == null || temp.rightChild == lastVisit){
+            if (temp.rightChild == null || temp.rightChild == lastVisit) {
                 System.out.print(temp.num + "  ");
                 stack.pop();
                 lastVisit = temp;
@@ -136,6 +138,18 @@ public class ExecBinaryTree {
             } else {//将右孩子添加进栈
                 temp = temp.rightChild;
             }
-        }//当栈只剩最后一个元素后，并取出时，节点访问后会置空，并将循环节点置空，此时循环就可以结束
+        }//当栈只剩最后一个元素后，并取出时，节点访问后会置空，并将循环节点置空，此时循环就可以 结束
+    }
+    public void hierarchicalTraversal(BinaryTree binaryTree){
+        LinkedList<BinaryTree> linkedList = new LinkedList<>();
+        linkedList.add(binaryTree);
+        while (!linkedList.isEmpty()){
+            binaryTree = linkedList.pop();
+            System.out.print(binaryTree.num + "  ");
+            if(binaryTree.leftChild != null)
+                linkedList.add(binaryTree.leftChild);
+            if(binaryTree.rightChild != null)
+                linkedList.add(binaryTree.rightChild);
+        }
     }
 }
