@@ -129,7 +129,7 @@ public class ExecBinaryTree {
                 temp = temp.leftChild;
             }
             temp = stack.peek();
-            //这个if表明这个栈顶端的节点的右孩子为空或者已经被访问，需要访问当前节点
+            //这个if表明这个栈顶端的节点的右孩子为空或者其右孩子已经被访问，需要访问当前节点
             if (temp.rightChild == null || temp.rightChild == lastVisit) {
                 System.out.print(temp.num + "  ");
                 stack.pop();
@@ -140,15 +140,16 @@ public class ExecBinaryTree {
             }
         }//当栈只剩最后一个元素后，并取出时，节点访问后会置空，并将循环节点置空，此时循环就可以 结束
     }
-    public void hierarchicalTraversal(BinaryTree binaryTree){
+
+    public void hierarchicalTraversal(BinaryTree binaryTree) {
         LinkedList<BinaryTree> linkedList = new LinkedList<>();
         linkedList.add(binaryTree);
-        while (!linkedList.isEmpty()){
+        while (!linkedList.isEmpty()) {
             binaryTree = linkedList.pop();
             System.out.print(binaryTree.num + "  ");
-            if(binaryTree.leftChild != null)
+            if (binaryTree.leftChild != null)
                 linkedList.add(binaryTree.leftChild);
-            if(binaryTree.rightChild != null)
+            if (binaryTree.rightChild != null)
                 linkedList.add(binaryTree.rightChild);
         }
     }
